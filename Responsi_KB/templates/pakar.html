@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Mobile Lag Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <a href="/" class="btn btn-outline-secondary mb-3">← Kembali ke Dashboard</a>
+        <div class="card shadow border-0">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Mobile Lag Tracker</h4>
+            </div>
+            <div class="card-body">
+                <p class="text-muted">Sistem akan menganalisis gejala dan solusi secara akurat melalui opsi masalah perangkat yang dipilih:</p>
+                <form method="POST">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="g1" id="g1">
+                                <label class="form-check-label" for="g1">[G1] Frame drop saat banyak efek visual</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="g2" id="g2">
+                                <label class="form-check-label" for="g2">[G2] Suhu bodi terasa menyengat/panas</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="g3" id="g3">
+                                <label class="form-check-label" for="g3">[G3] Ping melonjak di atas 100ms / sinyal merah</label>
+                            </div>
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" name="g4" id="g4">
+                                <label class="form-check-label" for="g4">[G4] Respon sentuhan layar lambat (input lag)</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="g5" id="g5">
+                                <label class="form-check-label" for="g5">[G5] Game sering Force Close (keluar sendiri)</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="g6" id="g6">
+                                <label class="form-check-label" for="g6">[G6] Baterai berkurang >15% dalam 10 menit</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="g7" id="g7">
+                                <label class="form-check-label" for="g7">[G7] Layar sempat freeze (berhenti) 1-3 detik</label>
+                            </div>
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" name="g8" id="g8">
+                                <label class="form-check-label" for="g8">[G8] Sisa penyimpanan internal kurang dari 10%</label>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 mt-3 py-2 fw-bold">Diagnosa Masalah</button>
+                </form>
+
+                {% if hasil_pakar %}
+                <div class="alert alert-warning mt-4 border-warning shadow-sm">
+                    <h5 class="alert-heading text-danger fw-bold">
+                        Ditemukan {{ hasil_pakar|length }} Indikasi Masalah:
+                    </h5>
+                    <hr>
+                    <ul class="list-group list-group-flush bg-transparent">
+                        {% for item in hasil_pakar %}
+                        <li class="list-group-item bg-transparent">
+                            <h6 class="mb-1 fw-bold text-dark">{{ item.masalah }}</h6>
+                            <p class="mb-0 text-muted small"><strong>Tindakan Solutif:</strong> {{ item.solusi }}</p>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Gaming Phone Performance Grader</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <a href="/" class="btn btn-outline-secondary mb-3">← Kembali ke Dashboard</a>
+        <div class="card shadow border-0">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0">Gaming Phone Performance Grader</h4>
+            </div>
+            <div class="card-body">
+                <p class="text-muted small">Sistem ini memproses input ke dalam 3 Derajat Keanggotaan (Rendah/Sedang/Tinggi) melalui inferensi kurva segitiga & trapesium.</p>
+                <form method="POST">
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Intensitas Clock Processor (1.0 - 4.0 GHz)</label>
+                        <input type="range" class="form-range" name="clock" min="1.0" max="4.0" step="0.1" value="2.5" oninput="this.nextElementSibling.value = this.value">
+                        <output class="badge bg-secondary">2.5</output> GHz
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Kapasitas VRAM Total (2 - 18 GB)</label>
+                        <input type="range" class="form-range" name="ram" min="2" max="18" step="1" value="8" oninput="this.nextElementSibling.value = this.value">
+                        <output class="badge bg-secondary">8</output> GB
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Thermal Cooling Score (1 - 10)</label>
+                        <input type="range" class="form-range" name="heat" min="1" max="10" step="1" value="5" oninput="this.nextElementSibling.value = this.value">
+                        <output class="badge bg-secondary">5</output> Point
+                    </div>
+                    <button type="submit" class="btn btn-success w-100 py-2 fw-bold">Hitung Gaming Score Performance</button>
+                </form>
+
+                {% if skor %}
+                <div class="alert alert-success mt-4 text-center shadow-sm">
+                    <h3 class="fw-bold mb-1">{{ skor }} / 100</h3>
+                    <p class="mb-0"><strong>Status:</strong> {{ label }}</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
