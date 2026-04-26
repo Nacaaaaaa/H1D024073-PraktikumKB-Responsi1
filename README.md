@@ -34,11 +34,10 @@ Sistem ini bertugas untuk mencari akar permasalahan *lag, frame drop*, atau *for
 
 ---
 
-## 🚀 Quick Start (Instalasi & Deployment)
+## Quick Start (Instalasi & Deployment)
 
 Pastikan Anda telah menginstal **Python 3.8+** dan **Git**. Anda bisa menyalin dan menjalankan seluruh blok kode di bawah ini di Terminal / Command Prompt Anda sekaligus.
 
-### 🪟 Pengguna Windows
 ```bash
 # 1. Kloning dan masuk ke folder repositori
 git clone <url-repositori-github-anda>
